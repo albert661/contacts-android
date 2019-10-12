@@ -90,6 +90,7 @@ public class ContactsManager extends CordovaPlugin {
             ContactsContract.Contacts.HAS_PHONE_NUMBER,
             ContactsContract.CommonDataKinds.Phone.NUMBER,
             ContactsContract.CommonDataKinds.Phone.NORMALIZED_NUMBER,
+			ContactsContract.ContactOptionsColumns.STARRED,
             ContactsContract.CommonDataKinds.Phone.TYPE,
             ContactsContract.Data.CONTACT_ID,
             ContactsContract.Data.MIMETYPE
@@ -100,6 +101,7 @@ public class ContactsManager extends CordovaPlugin {
                 ContactsContract.Contacts.HAS_PHONE_NUMBER + " = 1",
                 null,
                 ContactsContract.Data.CONTACT_ID + " ASC");
+				//ContactsContract.Data.DISPLAY_NAME + " ASC");
 
         contacts = populateContactArray(cursor);
         return contacts;
@@ -189,6 +191,7 @@ public class ContactsManager extends CordovaPlugin {
         String normalizedNumber = cursor.getString(cursor.getColumnIndex(Phone.NORMALIZED_NUMBER));
         phoneNumber.put("number", number);
         phoneNumber.put("normalizedNumber", (normalizedNumber == null) ? number : normalizedNumber);
+		phoneNumber.put("starred", STARRED);
         phoneNumber.put("type", getPhoneTypeLabel(cursor.getInt(cursor.getColumnIndex(Phone.TYPE))));
         return phoneNumber;
     }
