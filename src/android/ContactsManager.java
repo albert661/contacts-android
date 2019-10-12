@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.ContactOptionsColumns.*;
 import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Contacts.Data;
@@ -90,7 +91,7 @@ public class ContactsManager extends CordovaPlugin {
             ContactsContract.Contacts.HAS_PHONE_NUMBER,
             ContactsContract.CommonDataKinds.Phone.NUMBER,
             ContactsContract.CommonDataKinds.Phone.NORMALIZED_NUMBER,
-			ContactsContract.ContactOptionsColumns.Phone.STARRED,
+			ContactsContract.ContactOptionsColumns.STARRED,
             ContactsContract.CommonDataKinds.Phone.TYPE,
             ContactsContract.Data.CONTACT_ID,
             ContactsContract.Data.MIMETYPE
@@ -191,7 +192,7 @@ public class ContactsManager extends CordovaPlugin {
         String normalizedNumber = cursor.getString(cursor.getColumnIndex(Phone.NORMALIZED_NUMBER));
         phoneNumber.put("number", number);
         phoneNumber.put("normalizedNumber", (normalizedNumber == null) ? number : normalizedNumber);
-		phoneNumber.put("starred", Phone.STARRED);
+		phoneNumber.put("starred", STARRED);
         phoneNumber.put("type", getPhoneTypeLabel(cursor.getInt(cursor.getColumnIndex(Phone.TYPE))));
         return phoneNumber;
     }
