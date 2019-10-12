@@ -14,10 +14,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.provider.ContactsContract.ContactOptionsColumns.*;
 import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Contacts.Data;
+import android.provider.ContactsContract.ContactOptionsColumns;
 import android.util.Log;
 import static android.Manifest.permission.READ_CONTACTS;
 
